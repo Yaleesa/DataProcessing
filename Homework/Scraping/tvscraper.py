@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-# Name:
-# Student number:
+# Name: Yaleesa Borgman
+# Student number: 6215262
 '''
 This script scrapes IMDB and outputs a CSV file with highest ranking tv series.
 '''
