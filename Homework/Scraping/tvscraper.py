@@ -63,10 +63,9 @@ def extract_tvseries(dom):
                 pass
         actorStr = ', '.join(actorArr)
     
-
         imdbList.append([title, rating, genreStr, actorStr, runtime])
 
-    return imdbList # replace this line as well as appropriate
+    return imdbList
 
 
 def save_csv(f, tvseries):
