@@ -45,7 +45,7 @@ def extract_tvseries(dom):
         actors = movie.by_tag('span.credit')[0]
         runtime = int(re.search(r'\d+', runtimes).group())
 
-        #To get the individual genres and artist, it loops to ignore the | character
+        #To get the individual genres and actors, it loops to ignore the | character
         #between them. Without this the genre.content fails.
         #after that the genres and actors are combined in a string.
         genreArr = []
