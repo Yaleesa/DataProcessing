@@ -1,0 +1,13 @@
+Details: Yaleesa Borgman, 6215262, Questions week 4, November 2015
+
+Why is it useful to encapsulate JavaScript code in a module as described in chapter 10 of Eloquent JavaScript?
+
+Om de code beter gestructureerd en leesbaar te krijgen, er zijn geen losse global variabelen meer, maar alles behoort tot een functie, die vervolgens wel weer global valt aan te roepen
+
+Describe what asynchronous programming is and how it differs from the style of programming you used in C and Python.
+
+Bij synchronous programmeren zoals in python en C voert het programma stapje voor stapje het programma uit en wacht op de functies die uitgevoerd worden, tot deze klaar zijn. asynchronous programma's wachten daar niet op en voeren alle code meteen uit.
+
+Is JSON valid JavaScript? Describe the differences between JavaScript and JSON.
+
+JSON staat voor javascript object notation. Wat wil zeggen dat JSON data, data models zijn die geschreven is in javascript. (met wat verschillen)
