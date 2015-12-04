@@ -1,0 +1,59 @@
+/*d3line.css, contains css for interactive linegraph with d3*/
+
+body {
+  font: 10px sans-serif;
+}
+
+.chart {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+}
+
+.axis path, .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+    stroke-width: 1.5px;
+}
+
+.line {
+  fill: none;
+  stroke: black;
+}
+
+.container {
+  text-align: center
+}
+
+.x.text, .y.text {
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+.circle {
+    fill: white;
+    stroke: steelblue;
+    stroke-width: 2px;
+}
+
+.area {
+    fill: steelblue;
+    stroke: none;
+    opacity: 0.1;
+}
+
+.overlay {
+    fill: none;
+    stroke: none;
+    pointer-events: all;
+}
+
+.crosshairLine {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 0.7px;
+}
+
+.crosshairCircle {
+    fill: none;
+}
