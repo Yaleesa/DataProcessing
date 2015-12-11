@@ -1,7 +1,9 @@
+// script for D3+ - Yaleesa Borgman- 6215262
+
 var tooltipPosition = {'top':0,'left':0}
 
+//function for making the barcharts
 function bargraph(city){
-
     var w = 500;
     var h = 200;
     var barPadding = 100; 
@@ -17,9 +19,7 @@ function bargraph(city){
     var storeList = []
     for (store in cityData){
         var gameList = []
-        // var storeDict = {}
         for (game in cityData[store]){
-            // var unit = {}
             stock = [cityData[store][game].newStock , cityData[store][game].usedStock]
             gameList.push([game,stock])
         }
@@ -30,6 +30,7 @@ function bargraph(city){
 
 }
 
+//function for managing the stores per city
 function appendStores(storeList) {
     divcontainer = d3.select("div#graph_container")
     for (store in storeList) {
@@ -37,11 +38,10 @@ function appendStores(storeList) {
                     .attr("id", 'store'+store)
                     .attr('class', 'store_div')
         appendGames(storeList[store][0],storeList[store][1], store)
-    }
-    
-         
+    }       
 }
 
+//function for managing the games (in this cae every game)
 function appendGames(storeName, gameList, n) {
     // input format: [{"game1":[n,u]},{"game2":[n,u]}]
     // return div with multiple svg objects
@@ -61,6 +61,7 @@ function appendGames(storeName, gameList, n) {
      }
 }
 
+//function for making the actual barcharts
 function createBarChart(gameName, stockData, gameN, storeN) {
     // input format: "gamename", [newStock, usedStock]
     // returns svg object with rect,rect,text
@@ -71,7 +72,6 @@ function createBarChart(gameName, stockData, gameN, storeN) {
     
     graph = d3.select("div#store"+storeN+" svg#game"+gameN)
 
-    console.log(graph)
     graph.selectAll("rect")
             .data(stockData)
             .enter()
@@ -154,9 +154,9 @@ function createBarChart(gameName, stockData, gameN, storeN) {
 
 }
 
+//function for restructing the json data for use per store and their stock
 function restruct(data){
     cityDict = {}
-
     for (gameTitle in data){
         var storeList = data[gameTitle]
         for (i in storeList) {
@@ -176,18 +176,14 @@ function restruct(data){
                 'newStock': store['newStock']
             }
 
-
         }
         
     }
 
-
 }
 
-function print(something) {
-    console.log(something)
-}
-
+//function for setting the city on the map, and make them interactable
+//triggers for making the barchart
 function stores(){
     var storelist = [{store: "Amsterdam", positions:[250, 270]}, {store: "Eindhoven", positions:[300, 450]}]
     var stores = d3.select('#svg2')
@@ -227,20 +223,18 @@ function stores(){
         .on("click", function(d){
             container = d3.select('div#graph_container')
             divunit = container.selectAll('div')
-            console.log(container.length)
+
             if (divunit.empty()) {
                 bargraph(d.store)
-                console.log("added")
 
             } else {
                 divunit.remove()
-                console.log("removed")
-                bargraph(d.store)
-                
+                bargraph(d.store)     
             }     
         })
 }
 
+//getting the position of the circle (city) for later placing the tooltip 
 function setTooltipPosition (id) {
     var circle = $('#'+id)
     if (circle.length != 0 ){
@@ -250,13 +244,14 @@ function setTooltipPosition (id) {
 
 
 $(document).ready(function(){
-
+    //import the map
     d3.xml("Blank_map_of_the_Netherlands.svg", "image/svg+xml", function(error, xml) {
       if (error) throw error;
       var container = document.getElementById('container')
 
       container.appendChild(xml.documentElement);
     });
+    //import json data
     d3.json("data.json", function(error, json) {
         if (error) return console.warn(error);
         restruct(json)
@@ -265,7 +260,4 @@ $(document).ready(function(){
 
 });
 
-function jsonData(data){
-    console.log(data)
-}
 
